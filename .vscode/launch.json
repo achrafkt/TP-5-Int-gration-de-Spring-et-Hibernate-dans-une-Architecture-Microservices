@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TestHibernate",
+            "request": "launch",
+            "mainClass": "com.microservice.product.TestHibernate",
+            "projectName": "microservice-product",
+            "console": "internalConsole",
+            "vmArgs": "-Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8"
+        },
+        {
+            "type": "java",
+            "name": "MainApp",
+            "request": "launch",
+            "mainClass": "com.microservice.product.MainApp",
+            "projectName": "microservice-product",
+            "console": "internalConsole",
+            "vmArgs": "-Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8"
+        }
+    ]
+}

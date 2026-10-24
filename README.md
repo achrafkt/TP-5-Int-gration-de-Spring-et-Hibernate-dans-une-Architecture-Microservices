@@ -79,6 +79,28 @@ Nombre total de produits en base : 1
 
 (Le total augmente de 1 à chaque exécution de `MainApp`.)
 
+### Lancer depuis VS Code
+
+Installez l'extension recommandée **Extension Pack for Java** (proposée automatiquement à l'ouverture du dossier). Ensuite, dans l'onglet *Exécuter et déboguer*, choisissez la configuration **TestHibernate** ou **MainApp**. La sortie s'affiche dans la *Console de débogage*.
+
+## Captures d'écran
+
+![Structure des packages](screenshots/structure.png)
+
+*Structure du projet : les packages `entity`, `dao`, `service` et `config` correspondent aux couches de l'architecture.*
+
+![Exécution de TestHibernate](screenshots/test-hibernate.png)
+
+*TestHibernate : Hibernate crée la table `products` et le contexte Spring démarre sans erreur.*
+
+![Exécution de MainApp](screenshots/mainapp.png)
+
+*MainApp : le produit est inséré via la couche service (requête `insert` générée par Hibernate), puis le nombre total de produits en base est affiché.*
+
+![Table products dans HeidiSQL](screenshots/bdd.png)
+
+*La table `products` de la base `product_db`, ouverte dans HeidiSQL, contient la ligne insérée par MainApp.*
+
 ## Rôle de chaque couche
 
 - **entity** : `Product` est une classe annotée `@Entity`. Hibernate la fait correspondre à la table `products` (une instance = une ligne).

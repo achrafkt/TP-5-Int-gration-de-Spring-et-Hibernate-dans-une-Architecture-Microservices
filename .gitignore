@@ -9,4 +9,8 @@ target/
 .classpath
 .project
 .settings/
-.vscode/
+# VS Code : on ignore le dossier sauf les fichiers de configuration partagés
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/extensions.json
