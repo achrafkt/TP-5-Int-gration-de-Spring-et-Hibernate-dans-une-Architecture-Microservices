@@ -14,6 +14,7 @@ public class TestHibernate {
         // try-with-resources : le contexte est fermé à la fin (fermeture de la SessionFactory)
         try (AnnotationConfigApplicationContext context =
                      new AnnotationConfigApplicationContext(AppConfig.class)) {
+            // Si on arrive ici, tous les beans (DataSource, SessionFactory, DAO, service) ont été créés
             System.out.println("Contexte Spring initialisé avec succès !");
         }
     }

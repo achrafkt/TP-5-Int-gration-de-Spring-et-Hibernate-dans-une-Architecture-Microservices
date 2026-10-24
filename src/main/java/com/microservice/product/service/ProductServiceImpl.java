@@ -32,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
         if (product.getPrice() < 0) {
             throw new IllegalArgumentException("Le prix ne peut pas être négatif");
         }
+        // Le DAO fait l'INSERT ; le commit est fait par Spring à la fin de la méthode
         productDao.save(product);
     }
 

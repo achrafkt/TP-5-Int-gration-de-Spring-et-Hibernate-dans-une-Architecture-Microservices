@@ -9,13 +9,18 @@ import java.util.List;
  */
 public interface IDao<T> {
 
+    // Ajoute une nouvelle entité en base
     void save(T entity);
 
+    // Met à jour une entité qui existe déjà
     void update(T entity);
 
+    // Supprime l'entité de la base
     void delete(T entity);
 
+    // Cherche une entité par sa clé primaire (renvoie null si elle n'existe pas)
     T findById(Long id);
 
+    // Renvoie toutes les lignes de la table
     List<T> findAll();
 }

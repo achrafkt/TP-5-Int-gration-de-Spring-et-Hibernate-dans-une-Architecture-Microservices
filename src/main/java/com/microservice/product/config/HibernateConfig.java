@@ -33,6 +33,7 @@ public class HibernateConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        // Les 4 valeurs viennent de application.properties (clés jdbc.*)
         dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
         dataSource.setUrl(env.getProperty("jdbc.url"));
         dataSource.setUsername(env.getProperty("jdbc.username"));
@@ -47,6 +48,7 @@ public class HibernateConfig {
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        // Hibernate passe par la DataSource ci-dessus pour obtenir ses connexions
         sessionFactory.setDataSource(dataSource());
         // packagesToScan : Hibernate cherche les classes @Entity dans ce package,
         // pas besoin de les déclarer une par une.
