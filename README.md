@@ -123,5 +123,3 @@ Chaque correction est aussi signalée par un commentaire `CORRECTION énoncé` d
 6. **`pom.xml`** : ajout de `exec-maven-plugin` pour lancer `MainApp` et `TestHibernate` en ligne de commande.
 
 ---
-
-Réalisé avec l'assistance de Claude Code.
