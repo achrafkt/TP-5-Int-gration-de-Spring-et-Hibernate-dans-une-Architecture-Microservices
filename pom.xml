@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Étape 1 : Projet Maven du microservice "product".
+    On utilise Spring "classique" (sans Spring Boot) + Hibernate comme implémentation JPA/ORM.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.microservice</groupId>
+    <artifactId>microservice-product</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <!-- CORRECTION énoncé : la version de Java n'était pas précisée,
+             Maven compilait alors avec une version par défaut trop ancienne. -->
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <!-- CORRECTION énoncé : encodage UTF-8 pour éviter les problèmes d'accents dans les commentaires. -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring.version>5.3.20</spring.version>
+        <hibernate.version>5.6.9.Final</hibernate.version>
+
+        <!-- Classe lancée par "mvn exec:java" (on peut la changer avec -Dexec.mainClass=...) -->
+        <exec.mainClass>com.microservice.product.MainApp</exec.mainClass>
+    </properties>
+
+    <dependencies>
+        <!-- Conteneur Spring : ApplicationContext, @Configuration, @Bean, injection de dépendances -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Intégration Spring / ORM : LocalSessionFactoryBean, HibernateTransactionManager -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Hibernate : le framework ORM qui fait le mapping objet <-> tables -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- CORRECTION énoncé : le driver JDBC MySQL manquait.
+             Sans lui : "ClassNotFoundException: com.mysql.cj.jdbc.Driver" au démarrage. -->
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- CORRECTION énoncé : plugin ajouté pour lancer MainApp / TestHibernate
+                 en ligne de commande avec "mvn compile exec:java". -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
