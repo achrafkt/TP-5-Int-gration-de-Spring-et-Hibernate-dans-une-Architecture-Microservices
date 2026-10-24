@@ -91,15 +91,15 @@ Installez l'extension recommandée **Extension Pack for Java** (proposée automa
 
 ![Exécution de TestHibernate](screenshots/test-hibernate.png)
 
-*TestHibernate : Hibernate crée la table `products` et le contexte Spring démarre sans erreur.*
+*TestHibernate : Hibernate s'initialise (dialecte MySQL 8) et le contexte Spring démarre sans erreur. La table `products` existant déjà, `hbm2ddl.auto=update` ne la recrée pas (le `create table` n'apparaît qu'à la toute première exécution).*
 
 ![Exécution de MainApp](screenshots/mainapp.png)
 
-*MainApp : le produit est inséré via la couche service (requête `insert` générée par Hibernate), puis le nombre total de produits en base est affiché.*
+*MainApp : le produit est inséré via la couche service (requête `insert` générée par Hibernate), puis le nombre total de produits en base est affiché : 2, car MainApp avait déjà été exécuté une fois.*
 
-![Table products dans HeidiSQL](screenshots/bdd.png)
+![Table products dans MySQL](screenshots/bdd.png)
 
-*La table `products` de la base `product_db`, ouverte dans HeidiSQL, contient la ligne insérée par MainApp.*
+*Structure (`DESCRIBE`) et contenu de la table `products` de la base `product_db`, affichés avec le client `mysql` après la première exécution de MainApp : on retrouve la ligne insérée et l'id généré en `auto_increment`.*
 
 ## Rôle de chaque couche
 
